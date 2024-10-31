@@ -1,7 +1,7 @@
 #!/bin/bash
 # naiss2024-22-757 
 #SBATCH -A naiss2024-22-757 
-#SBATCH -p node
+#SBATCH -p main
 #SBATCH -t 0-1:00:00
 #SBATCH -n 1
 #SBATCH -J mk_ref_STAR.sh
