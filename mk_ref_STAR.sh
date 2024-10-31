@@ -17,9 +17,9 @@ module load star/2.7.11a
 
 # 
 VERSION=109
-ref_name=Mus_musculus_GRCm39_"$VERSION".index
-gtf_file=Mus_musculus.GRCm39."$VERSION".gtf
-fasta_file=Mus_musculus.GRCm39.dna.toplevel.fa
+ref_name=/ref/Mus_musculus.GRCm39."$VERSION".index
+gtf_file=/ref/Mus_musculus.GRCm39."$VERSION".gtf
+fasta_file=/ref/Mus_musculus.GRCm39.dna.toplevel.fa
 
 # swtich dictionary
 cd /cfs/klemming/projects/supr/rnaatlas/nobackup/private/xuanyi
