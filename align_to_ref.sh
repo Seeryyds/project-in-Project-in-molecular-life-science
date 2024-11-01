@@ -33,28 +33,29 @@ for sample in *; do
     mkdir -p "$output_dir/$sample"
   fi
   
-  # Identify read_1 and read_2 files
-  unset read_1 read_2  # Clear variables before each sample
-  for read in "$sample"/*.fq.gz; do
-    if [[ "$read" == *1.fq.gz ]]; then
-      read_1=$read
-    elif [[ "$read" == *2.fq.gz ]]; then
-      read_2=$read
-    fi
-  done
-
-  # Debugging output to ensure read files are correctly assigned
-  echo "Processing sample: $sample"
-  echo "Read 1 file: $read_1"
-  echo "Read 2 file: $read_2"
-
-  # Check if read_1 or read_2 is empty and skip STAR alignment if they are
-  if [[ -z "$read_1" || -z "$read_2" ]]; then
-    echo "Warning: Read files not found for sample $sample. Skipping alignment."
-    continue
+ # Identify read_1 and read_2 files
+unset read_1 read_2  # Clear variables before each sample
+for read in "$sample"/*.fastq.gz; do
+  if [[ "$read" == *_1.fastq.gz ]]; then
+    read_1=$read
+  elif [[ "$read" == *_2.fastq.gz ]]; then
+    read_2=$read
   fi
+done
+
+# Debugging output to ensure read files are correctly assigned
+echo "Processing sample: $sample"
+echo "Read 1 file: $read_1"
+echo "Read 2 file: $read_2"
+
+# Check if read_1 or read_2 is empty and skip STAR alignment if they are
+if [[ -z "$read_1" || -z "$read_2" ]]; then
+  echo "Warning: Read files not found for sample $sample. Skipping alignment."
+  continue
+fi
+
   
-  # Run STAR alignment for each sample
+# Run STAR alignment for each sample
   STAR --genomeDir "$reference_directory" \
        --soloType CB_UMI_Simple \
        --readFilesCommand zcat \
