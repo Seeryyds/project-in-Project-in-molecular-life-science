@@ -65,6 +65,7 @@ fi
        --soloCBlen 16 \
        --soloUMIstart 21 \
        --soloUMIlen 10 \
+       --soloBarcodeReadLength 8 \
        --outFileNamePrefix "$output_dir/$sample/" \
        --limitOutSJcollapsed 2000000 \
        --runThreadN 18 \
