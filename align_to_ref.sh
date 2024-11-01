@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash 
 # naiss2024-22-757
 #SBATCH -A naiss2024-22-757
 #SBATCH -p main
@@ -33,50 +33,50 @@ for sample in *; do
     mkdir -p "$output_dir/$sample"
   fi
   
- # Identify read_1 and read_2 files
-unset read_1 read_2  # Clear variables before each sample
-for read in "$sample"/*.fastq.gz; do
-  if [[ "$read" == *_1.fastq.gz ]]; then
-    read_1=$read
-  elif [[ "$read" == *_2.fastq.gz ]]; then
-    read_2=$read
+  # Identify read_1, read_2, and read_3 files
+  unset read_1 read_2 read_3  # Clear variables before each sample
+  for read in "$sample"/*.fastq.gz; do
+    if [[ "$read" == *_1.fastq.gz ]]; then
+      read_1=$read
+    elif [[ "$read" == *_2.fastq.gz ]]; then
+      read_2=$read
+    elif [[ "$read" == *_3.fastq.gz ]]; then
+      read_3=$read
+    fi
+  done
+
+  # Debugging output to ensure read files are correctly assigned
+  echo "Processing sample: $sample"
+  echo "Read 1 file: $read_1"
+  echo "Read 2 file: $read_2"
+  echo "Read 3 file: $read_3"
+
+  # Check if read_1, read_2, or read_3 is empty and skip STAR alignment if they are
+  if [[ -z "$read_1" || -z "$read_2" || -z "$read_3" ]]; then
+    echo "Warning: Read files not found for sample $sample. Skipping alignment."
+    continue
   fi
-done
 
-# Debugging output to ensure read files are correctly assigned
-echo "Processing sample: $sample"
-echo "Read 1 file: $read_1"
-echo "Read 2 file: $read_2"
-
-# Check if read_1 or read_2 is empty and skip STAR alignment if they are
-if [[ -z "$read_1" || -z "$read_2" ]]; then
-  echo "Warning: Read files not found for sample $sample. Skipping alignment."
-  continue
-fi
-
-## Perform alignment for the sample
-STAR --genomeDir "$reference_directory" \
-     --soloType CB_UMI_Simple \
-     --readFilesCommand zcat \
-     --readFilesIn "$read_2" "$read_1" \
-     --soloCBwhitelist "None" \
-     --soloCBstart 1 \
-     --soloCBlen 8 \
-     --soloUMIlen 0 \
-     --soloBarcodeReadLength 0 \
-     --outFileNamePrefix "$output_dir/$sample/" \
-     --limitOutSJcollapsed 2000000 \
-     --runThreadN 18 \
-     --soloCellFilter EmptyDrops_CR \
-     --soloUMIfiltering MultiGeneUMI_CR \
-     --soloUMIdedup 1MM_CR \
-     --soloFeatures Gene Velocyto \
-     --soloMultiMappers EM \
-     --outSAMtype None
-
-
-
-
+  ## Perform alignment for the sample
+  STAR --genomeDir "$reference_directory" \
+       --soloType CB_UMI_Simple \
+       --readFilesCommand zcat \
+       --readFilesIn "$read_3" "$read_1" "$read_2" \
+       --soloCBwhitelist "None" \
+       --soloCBstart 1 \
+       --soloCBlen 8 \
+       --soloUMIstart 9 \
+       --soloUMIlen 10 \
+       --soloBarcodeReadLength 0 \
+       --outFileNamePrefix "$output_dir/$sample/" \
+       --limitOutSJcollapsed 2000000 \
+       --runThreadN 18 \
+       --soloCellFilter EmptyDrops_CR \
+       --soloUMIfiltering MultiGeneUMI_CR \
+       --soloUMIdedup 1MM_CR \
+       --soloFeatures Gene Velocyto \
+       --soloMultiMappers EM \
+       --outSAMtype None
 
 done
 
