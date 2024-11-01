@@ -56,25 +56,22 @@ fi
 
   
 # Run STAR alignment for each sample
-  STAR --genomeDir "$reference_directory" \
-       --soloType CB_UMI_Simple \
-       --readFilesCommand zcat \
-       --readFilesIn "$read_2" "$read_1" \
-       --soloCBwhitelist /cfs/klemming/projects/snic/rnaatlas/nobackup/private/xuanyi/ref/3M-february-2018.txt \
-       --soloCBstart 1 \
-       --soloCBlen 16 \
-       --soloUMIstart 21 \
-       --soloUMIlen 10 \
-       --soloBarcodeReadLength 8 \
-       --outFileNamePrefix "$output_dir/$sample/" \
-       --limitOutSJcollapsed 2000000 \
-       --runThreadN 18 \
-       --soloCBmatchWLtype 1MM_multi_Nbase_pseudocounts \
-       --soloCellFilter EmptyDrops_CR \
-       --soloUMIfiltering MultiGeneUMI_CR \
-       --soloUMIdedup 1MM_CR \
-       --soloFeatures Gene Velocyto \
-       --soloMultiMappers EM \
-       --outSAMtype None
+STAR --genomeDir "$reference_directory" \
+     --soloType CB_UMI_Simple \
+     --readFilesCommand zcat \
+     --readFilesIn "$read_2" "$read_1" \
+     --soloCBwhitelist /cfs/klemming/projects/snic/rnaatlas/nobackup/private/xuanyi/ref/3M-february-2018.txt \
+     --soloCBlen 8 \
+     --soloBarcodeReadLength 8 \
+     --outFileNamePrefix "$output_dir/$sample/" \
+     --limitOutSJcollapsed 2000000 \
+     --runThreadN 18 \
+     --soloCellFilter EmptyDrops_CR \
+     --soloUMIfiltering MultiGeneUMI_CR \
+     --soloUMIdedup 1MM_CR \
+     --soloFeatures Gene Velocyto \
+     --soloMultiMappers EM \
+     --outSAMtype None
+
 done
 
