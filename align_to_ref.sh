@@ -62,9 +62,9 @@ STAR --genomeDir "$reference_directory" \
      --soloCBwhitelist "None" \
      --soloCBstart 1 \
      --soloCBlen 8 \
-     --soloUMIstart 9 \
+     --soloUMIstart 1 \
      --soloUMIlen 8 \
-     --soloBarcodeReadLength 16 \
+     --soloBarcodeReadLength 0 \
      --outFileNamePrefix "$output_dir/$sample/" \
      --limitOutSJcollapsed 2000000 \
      --runThreadN 18 \
@@ -74,6 +74,7 @@ STAR --genomeDir "$reference_directory" \
      --soloFeatures Gene Velocyto \
      --soloMultiMappers EM \
      --outSAMtype None
+
 
 
 
