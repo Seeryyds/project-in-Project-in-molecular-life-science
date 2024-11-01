@@ -62,7 +62,7 @@ fi
        --readFilesIn "$read_2" "$read_1" \
        --soloCBwhitelist /cfs/klemming/projects/snic/rnaatlas/nobackup/private/xuanyi/ref/3M-february-2018.txt \
        --soloCBstart 1 \
-       --soloCBlen 20 \
+       --soloCBlen 16 \
        --soloUMIstart 21 \
        --soloUMIlen 10 \
        --outFileNamePrefix "$output_dir/$sample/" \
