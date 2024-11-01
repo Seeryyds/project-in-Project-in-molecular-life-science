@@ -62,7 +62,9 @@ STAR --genomeDir "$reference_directory" \
      --soloCBwhitelist "None" \
      --soloCBstart 1 \
      --soloCBlen 8 \
-     --soloBarcodeReadLength 8 \
+     --soloUMIstart 9 \
+     --soloUMIlen 8 \
+     --soloBarcodeReadLength 16 \
      --outFileNamePrefix "$output_dir/$sample/" \
      --limitOutSJcollapsed 2000000 \
      --runThreadN 18 \
