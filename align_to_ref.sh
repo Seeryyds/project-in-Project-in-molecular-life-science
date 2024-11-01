@@ -54,13 +54,12 @@ if [[ -z "$read_1" || -z "$read_2" ]]; then
   continue
 fi
 
-  
-# Run STAR alignment for each sample
+## Perform alignment for the sample
 STAR --genomeDir "$reference_directory" \
      --soloType CB_UMI_Simple \
      --readFilesCommand zcat \
      --readFilesIn "$read_2" "$read_1" \
-     --soloCBwhitelist /cfs/klemming/projects/snic/rnaatlas/nobackup/private/xuanyi/ref/3M-february-2018.txt \
+     --soloCBstart 1 \
      --soloCBlen 8 \
      --soloBarcodeReadLength 8 \
      --outFileNamePrefix "$output_dir/$sample/" \
@@ -72,6 +71,7 @@ STAR --genomeDir "$reference_directory" \
      --soloFeatures Gene Velocyto \
      --soloMultiMappers EM \
      --outSAMtype None
+
 
 done
 
