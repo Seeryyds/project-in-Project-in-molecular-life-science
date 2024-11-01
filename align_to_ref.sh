@@ -59,6 +59,7 @@ STAR --genomeDir "$reference_directory" \
      --soloType CB_UMI_Simple \
      --readFilesCommand zcat \
      --readFilesIn "$read_2" "$read_1" \
+     --soloCBwhitelist None \
      --soloCBstart 1 \
      --soloCBlen 8 \
      --soloBarcodeReadLength 8 \
@@ -71,6 +72,7 @@ STAR --genomeDir "$reference_directory" \
      --soloFeatures Gene Velocyto \
      --soloMultiMappers EM \
      --outSAMtype None
+
 
 
 done
