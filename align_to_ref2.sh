@@ -69,25 +69,26 @@ for sample in "${samples[@]}"; do
 
 
     # 执行 STAR
-    STAR --genomeDir "$reference_directory" \
-         --soloType CB_UMI_Simple \
-         --readFilesCommand zcat \
-         --readFilesIn "$read_2" "$read_3" \
-         --soloCBwhitelist "$whitelist" \
-         --soloCBstart 1 \
-         --soloCBlen "$CB_len" \
-         --soloUMIstart 17 \
-         --soloUMIlen "$UMI_len" \
-         --soloBarcodeReadLength 0 \
-         --limitOutSJcollapsed 2000000 \
-         --runThreadN 24 \
-         --outFilterMismatchNoverLmax 0.05 \
-         --outFilterMatchNmin 15 \
-         --soloCBmatchWLtype 1MM_multi_Nbase_pseudocounts \
-         --soloCellFilter EmptyDrops_CR \
-         --soloUMIfiltering MultiGeneUMI_CR \
-         --soloUMIdedup 1MM_CR \
-         --soloFeatures Gene Velocyto \
-         --soloMultiMappers EM \
-         --outSAMtype None
+ STAR --genomeDir "$reference_directory" \
+       --soloType CB_UMI_Simple \
+       --readFilesCommand zcat \
+       --readFilesIn "$read_2" "$read_3" \
+       --soloCBwhitelist "$whitelist" \
+       --soloCBstart 1 \
+       --soloCBlen $cb_len \
+       --soloUMIstart 17 \
+       --soloUMIlen $umi_len \
+       --soloBarcodeReadLength 0 \
+       --outFileNamePrefix "$output_dir/$sample/" \
+       --limitOutSJcollapsed 2000000 \
+       --runThreadN 24 \
+       --outFilterMismatchNoverLmax 0.05 \
+       --outFilterMatchNmin 15 \
+       --soloCBmatchWLtype 1MM_multi_Nbase_pseudocounts \
+       --soloCellFilter EmptyDrops_CR \
+       --soloUMIfiltering MultiGeneUMI_CR \
+       --soloUMIdedup 1MM_CR \
+       --soloFeatures Gene Velocyto \
+       --soloMultiMappers EM \
+       --outSAMtype None
 done
