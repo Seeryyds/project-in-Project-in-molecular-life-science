@@ -69,7 +69,7 @@ for sample in "${samples[@]}"; do
 
 
     # 执行 STAR
- STAR --genomeDir "$reference_directory" \
+STAR --genomeDir "$reference_directory" \
        --soloType CB_UMI_Simple \
        --readFilesCommand zcat \
        --readFilesIn "$read_2" "$read_3" \
