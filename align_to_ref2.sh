@@ -72,7 +72,8 @@ for sample in "${samples[@]}"; do
 STAR --genomeDir "$reference_directory" \
        --soloType CB_UMI_Simple \
        --readFilesCommand zcat \
-       --readFilesIn "$read_2" "$read_3" \
+       --readFilesIn "$read_3" "$read_2" \
+       --runDirPerm All_RWX
        --soloCBwhitelist "$whitelist" \
        --soloCBstart 1 \
        --soloCBlen $cb_len \
