@@ -69,9 +69,10 @@ for sample in "${samples[@]}"; do
 
   # 运行 STAR 命令
   STAR --genomeDir "$reference_directory" \
+       --runDirPerm All_RWX \
        --soloType CB_UMI_Simple \
        --readFilesCommand zcat \
-       --readFilesIn "$read_2" "$read_3" \
+       --readFilesIn "$read_3" "$read_2" \
        --soloCBwhitelist "$whitelist" \
        --soloCBstart 1 \
        --soloCBlen $cb_len \
@@ -81,6 +82,7 @@ for sample in "${samples[@]}"; do
        --outFileNamePrefix "$output_dir/$sample/" \
        --limitOutSJcollapsed 2000000 \
        --runThreadN 24 \
+       --soloCBmatchWLtype 1MM_multi_Nbase_pseudocounts \
        --soloCellFilter EmptyDrops_CR \
        --soloUMIfiltering MultiGeneUMI_CR \
        --soloUMIdedup 1MM_CR \
