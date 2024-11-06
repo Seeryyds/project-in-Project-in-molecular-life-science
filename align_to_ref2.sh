@@ -73,7 +73,7 @@ STAR --genomeDir "$reference_directory" \
        --soloType CB_UMI_Simple \
        --readFilesCommand zcat \
        --readFilesIn "$read_3" "$read_2" \
-       --runDirPerm All_RWX
+       --runDirPerm All_RWX \
        --soloCBwhitelist "$whitelist" \
        --soloCBstart 1 \
        --soloCBlen $cb_len \
