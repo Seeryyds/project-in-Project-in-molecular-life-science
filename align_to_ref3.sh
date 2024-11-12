@@ -4,9 +4,9 @@
 #SBATCH -p main
 #SBATCH -t 0-6:00:00
 #SBATCH -n 2
-#SBATCH -J align_to_ref.sh
-#SBATCH -e align_to_ref.err
-#SBATCH -o align_to_ref2.o
+#SBATCH -J align_to_ref3.sh
+#SBATCH -e align_to_ref3.err
+#SBATCH -o align_to_ref3.o
 #SBATCH --mail-user=xuanyil@kth.se
 #SBATCH --mail-type=ALL
 
@@ -14,8 +14,8 @@ module load bioinfo-tools
 module load star/2.7.11a
 
 # 设置工作目录和输出目录
-base_dir="/cfs/klemming/projects/snic/rnaatlas/private/mouse/mouse_brain_sc/VISp"
-output_dir="/cfs/klemming/projects/supr/rnaatlas/nobackup/private/xuanyi/output2"
+base_dir="/cfs/klemming/projects/snic/rnaatlas/private/mouse/mouse_brain_sc/VISp/L8TX_210107_01_H08"
+output_dir="/cfs/klemming/projects/supr/rnaatlas/nobackup/private/xuanyi/output3"
 reference_directory="/cfs/klemming/projects/supr/rnaatlas/nobackup/private/xuanyi/ref/Mus_musculus.GRCm39.109.index"
 
 # 白名单文件路径
