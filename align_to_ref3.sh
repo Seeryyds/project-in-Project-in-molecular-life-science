@@ -14,7 +14,7 @@ module load bioinfo-tools
 module load star/2.7.11a
 
 # 设置工作目录和输出目录
-base_dir="/cfs/klemming/projects/snic/rnaatlas/private/mouse/mouse_brain_sc/VISp/L8TX_210107_01_H08"
+base_dir="/cfs/klemming/projects/snic/rnaatlas/private/mouse/mouse_brain_sc/VISp"
 output_dir="/cfs/klemming/projects/supr/rnaatlas/nobackup/private/xuanyi/output3"
 reference_directory="/cfs/klemming/projects/supr/rnaatlas/nobackup/private/xuanyi/ref/Mus_musculus.GRCm39.109.index"
 
@@ -23,8 +23,7 @@ whitelist_v2="/cfs/klemming/projects/supr/rnaatlas/nobackup/private/xuanyi/ref/7
 whitelist_v3="/cfs/klemming/projects/supr/rnaatlas/nobackup/private/xuanyi/ref/3M-february-2018.txt"
 
 # 样本列表：前6个是10Xv2，后4个是10Xv3
-samples=("L8TX_171120_01_E07" "L8TX_171120_01_F07" "L8TX_180115_01_B08" "L8TX_180115_01_C08" "L8TX_180115_01_E08" "L8TX_180115_01_F08" \
-         "L8TX_210107_01_C08" "L8TX_210107_01_F09" "L8TX_210107_01_G09" "L8TX_210107_01_H08")
+samples=("L8TX_210107_01_H08")
 
 # 遍历每个样本
 for sample in "${samples[@]}"; do
