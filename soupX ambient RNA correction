@@ -1,0 +1,16 @@
+#!/bin/bash
+#SBATCH --job-name=soupx_process
+#SBATCH --output=soupx_process_%j.out  # 输出文件
+#SBATCH --error=soupx_process_%j.err   # 错误文件
+#SBATCH --ntasks=1                     # 任务数
+#SBATCH --cpus-per-task=10             # 每个任务使用的CPU核心数，根据需要调整
+#SBATCH --mem=50G                      # 分配的内存，根据需要调整
+#SBATCH --time=24:00:00                # 设置运行的最大时间，根据需要调整
+#SBATCH --partition=core               # 分区名称，根据集群配置可能不同
+
+# 加载R模块，确保R环境已安装SoupX、Seurat等依赖包
+module load R
+
+# 运行R脚本
+Rscript /cfs/klemming/projects/snic/rnaatlas/nobackup/private/xuanyi/Rscript/process_samples.R
+
