@@ -10,7 +10,7 @@
 #SBATCH --mail-type=ALL             # 通知类型（开始、结束、失败等）
 
 # 加载R模块，确保R环境已安装SoupX、Seurat等依赖包
-module load R
+module load R/4.3.2
 
 # 运行R脚本
 Rscript /cfs/klemming/projects/snic/rnaatlas/nobackup/private/xuanyi/Rscript/process_samples.R
