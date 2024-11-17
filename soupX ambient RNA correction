@@ -1,12 +1,13 @@
-#!/bin/bash
-#SBATCH --job-name=soupx_process
-#SBATCH --output=soupx_process_%j.out  # 输出文件
-#SBATCH --error=soupx_process_%j.err   # 错误文件
-#SBATCH --ntasks=1                     # 任务数
-#SBATCH --cpus-per-task=10             # 每个任务使用的CPU核心数，根据需要调整
-#SBATCH --mem=50G                      # 分配的内存，根据需要调整
-#SBATCH --time=24:00:00                # 设置运行的最大时间，根据需要调整
-#SBATCH --partition=core               # 分区名称，根据集群配置可能不同
+#!/bin/bash 
+#SBATCH -A naiss2024-22-757         # 项目编号
+#SBATCH -p main                     # 分区名称
+#SBATCH -t 0-12:00:00               # 设置运行的最大时间
+#SBATCH -n 24                       # 使用的CPU核心数（根据需要调整）
+#SBATCH -J soupx_process            # 作业名称
+#SBATCH -e soupx_process.err        # 错误输出文件
+#SBATCH -o soupx_process.out        # 标准输出文件
+#SBATCH --mail-user=xuanyil@kth.se  # 邮箱地址
+#SBATCH --mail-type=ALL             # 通知类型（开始、结束、失败等）
 
 # 加载R模块，确保R环境已安装SoupX、Seurat等依赖包
 module load R
