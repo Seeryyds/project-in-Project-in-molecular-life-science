@@ -16,7 +16,7 @@ source ~/miniconda3/etc/profile.d/conda.sh
 conda activate r_env
 
 # 运行 R 脚本
-Rscript /cfs/klemming/projects/supr/rnaatlas/nobackup/private/xuanyi//Rscript/process_samples.R
+Rscript /cfs/klemming/projects/supr/rnaatlas/nobackup/private/xuanyi/Rscript/process_samples.R
 
 # 结束后停用 Conda 环境
 conda deactivate
