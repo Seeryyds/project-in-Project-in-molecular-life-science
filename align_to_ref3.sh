@@ -23,7 +23,8 @@ whitelist_v2="/cfs/klemming/projects/supr/rnaatlas/nobackup/private/xuanyi/ref/7
 whitelist_v3="/cfs/klemming/projects/supr/rnaatlas/nobackup/private/xuanyi/ref/3M-february-2018.txt"
 
 # 样本列表：前6个是10Xv2，后4个是10Xv3
-samples=("L8TX_210107_01_H08")
+samples=("1" "2" "3" "4" "5" "6" \
+         "7" "8" "9" "L8TX_210107_01_H08")
 
 # 遍历每个样本
 for sample in "${samples[@]}"; do
